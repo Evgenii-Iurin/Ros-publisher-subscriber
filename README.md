@@ -2,7 +2,7 @@
 <h1>Ros-publisher-subscriber</h1>
 </div>
 
-- [Publisher](#Publisher)
+- [Publisher](#publisher)
 
 Głównym celem jest przedstwienie oraz porównanie dwóch węzłów: węzeł wysyłający dane (publisher) oraz węzeł słuchający te dane (subscriber) w programie ROS. 
 
