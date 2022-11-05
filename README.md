@@ -136,7 +136,7 @@ if __name__== '__main__':
 ```
 
 
-# Grafy
+# Graf
 Mając dwa węzły, możemy przedstawić ich w postaci grafów, żeby zobaczyć ich połączenie w grafie węzłów. 
 ```
 $ source catkin_ws/devel/setup.bash
