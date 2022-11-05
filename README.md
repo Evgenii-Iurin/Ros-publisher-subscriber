@@ -145,7 +145,4 @@ $ rosrun my_robot_tutorials Listener.py
 $ rosrun rqt_graph rqt_graph
 ```
 Jak widać dwa węzły są związane przez kanał `/radio`. 
-<img title="graph" alt="graph" src="/pic/node_graph.png">
-
-# Wniosek
-
+<img title="graph" alt="graph" src="/pic/node_graph_full.png">
