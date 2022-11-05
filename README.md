@@ -5,6 +5,7 @@ Głównym celem jest przedstawienie i porównanie kodu dwóch węzłów: węzeł
 
 - [Publisher](#publisher)
 	- [Krok po kroku](#krok-po-kroku)
+	- [Sprawdzamy czy działa](#zobaczmy-jak-to-działa)
 
 ## Publisher
 
@@ -41,10 +42,12 @@ if __name__ == '__main__':							# ta linijka jest opcjonalna. Ona nie ma nic ws
 		rate.sleep()							 
 	rospy.logininfo("Node was stopped")					# opcjonalna linijka informująca, że węzeł został zatrzymany
 ```
+### Zobaczmy, jak to działa
 Teraz możemy zobaczyć czy działa nam wysłanie danych
 ```
 $ roscore
-$ python3 transmitter.py							# uwaga: musimy dać komendę [chmod -x transmitter.py], żeby kod był 											# wykonywalny
+$ python3 transmitter.py							# uwaga: musimy dać komendę [chmod -x transmitter.py], żeby kod był
+										# wykonywalny
 ```
 W terminalu nic nie będzie wyświetlane, dlatego, że nie mamy sluchacza,  nie musimy tworzyć go, możemy to zrobić za pomocą `rostopic`.
 ```
