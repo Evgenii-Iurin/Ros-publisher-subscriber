@@ -7,7 +7,7 @@ Głównym celem jest przedstawienie i porównanie kodu dwóch węzłów: węzeł
 	- [Krok po kroku](#krok-po-kroku)
 	- [Sprawdzamy czy działa](#zobaczmy-jak-to-działa)
 
-## Publisher
+# Publisher
 
 ### Krok po kroku
 
@@ -56,3 +56,19 @@ $ rostopic echo /radio
 >>> data: "Hello from the robot radio!"
 ```
 Gratulacje, stworzyliśmy publisher
+
+# Subscriber
+```py
+#! /usr/bin/env python3
+import rospy
+from std_msgs.msg import String
+
+def callback_receive_radio_data(msg):
+    rospy.loginfo("Message received : ")
+    rospy.loginfo(msg)
+
+if __name__== '__main__':
+    rospy.init_node("smartphone")						 # init node name
+    sub = rospy.Subscriber("/radio", String, callback_receive_radio_data)
+    rospy.spin()
+```
