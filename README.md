@@ -1,7 +1,10 @@
 <div align="center">
 <h1>Ros: publisher & subscriber</h1>
-</div>
+Evgenii Iurin
+</div><br>
+<div>
 Głównym celem jest przedstawienie i porównanie kodu dwóch węzłów: węzeł wysyłający dane (publisher) oraz węzeł słuchający te dane (subscriber) w programie ROS. 
+</div> <br>
 
 - [Porównanine](#porównanie)
 - [Publisher](#publisher)
@@ -9,7 +12,7 @@ Głównym celem jest przedstawienie i porównanie kodu dwóch węzłów: węzeł
 	- [Sprawdzamy wynik](#zobaczmy-jak-to-działa)
 - [Subscriber](#subscriber)
 	- [Krok po kroku](#krok-po-kroku-1)
-- [Węzły w postaci grafów](#grafy)
+- [Graf](#graf)
 
 # Porównanie
 <table>
