@@ -5,7 +5,9 @@ Głównym celem jest przedstawienie i porównanie kodu dwóch węzłów: węzeł
 
 - [Publisher](#publisher)
 	- [Krok po kroku](#krok-po-kroku)
-	- [Sprawdzamy czy działa](#zobaczmy-jak-to-działa)
+	- [Sprawdzamy wynik](#zobaczmy-jak-to-działa)
+- [Subscriber](#subscriber)
+	- [Krok po kroku](#krok-po-kroku-1)
 
 # Publisher
 
@@ -55,20 +57,30 @@ $ rostopic echo /radio
 >>> data: "Hello from the robot radio!"
 >>> data: "Hello from the robot radio!"
 ```
-Gratulacje, stworzyliśmy publisher
+Gratulacje, publisher jest gotowy
 
 # Subscriber
+### Krok po kroku
+Program dla `subscriber` prawie nie różni się od `publisher`. Musimy zainportować takie same biblioteki - `rospy` oraz `std_msgs`. Subscriber tworzy się za pomocą `rospy.Subscriber()`, nadajemy nazwę "kanału" od którego węzeł będzie otrzymywał informację, typ danych oraz funkcję, która przyjmuje `data`.
+
+Trzeba zwrócić uwagę, że jeżeli nadamy typ danych, który nie jest zgodny z typem przychodzących informacji, to dane nie zostaną zarejestrowane. 
+
+Funkcja `callback` przyjmuje dane, więc w dowolny sposób mozemy nimi operować, w naszym przypadku po prostu pokazujemy je w terminalu. 
+
 ```py
 #! /usr/bin/env python3
 import rospy
 from std_msgs.msg import String
 
-def callback_receive_radio_data(msg):
+def callback(msg):
     rospy.loginfo("Message received : ")
     rospy.loginfo(msg)
 
 if __name__== '__main__':
-    rospy.init_node("smartphone")						 # init node name
-    sub = rospy.Subscriber("/radio", String, callback_receive_radio_data)
+    rospy.init_node("listener")							# inicjacja węzła
+    sub = rospy.Subscriber("/radio", String, callback)				# tworzy moduł, który przyjmuje dane od stworzonego wcześniej "kanału"
+    	# /radio - nazwa "kanału" z którego będzie pobierana informacja
+    	# String - typ danych
+    	# callback - funkcja, która jest wywołana kiedy przychodzą nowe dane
     rospy.spin()
 ```
