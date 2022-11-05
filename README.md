@@ -3,11 +3,61 @@
 </div>
 Głównym celem jest przedstawienie i porównanie kodu dwóch węzłów: węzeł wysyłający dane (publisher) oraz węzeł słuchający te dane (subscriber) w programie ROS. 
 
+- [Porównanine](#porównanie)
 - [Publisher](#publisher)
 	- [Krok po kroku](#krok-po-kroku)
 	- [Sprawdzamy wynik](#zobaczmy-jak-to-działa)
 - [Subscriber](#subscriber)
 	- [Krok po kroku](#krok-po-kroku-1)
+- [Węzły w postaci grafów](#grafy)
+
+# Porównanie
+<table>
+<tr>
+<th>Publisher</th>
+<th>Subscriber</th>
+</tr>
+<tr>
+<td>
+  
+```py
+#!/usr/bin/env python3
+
+import rospy
+from std_msgs.msg import String
+
+if __name__ == '__main__':
+	rospy.init_node('transmitter')
+	pub = rospy.Publisher("/radio", String, queue_size=10)
+	rate = rospy.Rate(2)
+	while not rospy.is_shutdown():
+		msg = String()
+		msg.data = "Hi from the robot  radio!"
+		pub.publish(msg)
+		rate.sleep()
+```
+  
+</td>
+<td>
+
+```py
+#! /usr/bin/env python3
+
+import rospy
+from std_msgs.msg import String
+
+def callback(msg):
+    rospy.loginfo(msg)
+
+if __name__== '__main__':
+    rospy.init_node("listener")
+    sub = rospy.Subscriber("/radio", String, callback)
+    rospy.spin()
+```
+
+</td>
+</tr>
+</table>
 
 # Publisher
 
@@ -94,6 +144,8 @@ $ rosrun my_robot_tutorials transmitter.py
 $ rosrun my_robot_tutorials Listener.py 
 $ rosrun rqt_graph rqt_graph
 ```
+Jak widać dwa węzły są związane przez kanał `/radio`. 
+<img title="graph" alt="graph" src="/pic/node_graph.png">
 
-
+# Wniosek
 
