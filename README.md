@@ -84,3 +84,16 @@ if __name__== '__main__':
     	# callback - funkcja, która jest wywołana kiedy przychodzą nowe dane
     rospy.spin()
 ```
+
+
+# Grafy
+Mając dwa węzły, możemy przedstawić ich w postaci grafów, żeby zobaczyć ich połączenie w grafie węzłów. 
+```
+$ source catkin_ws/devel/setup.bash
+$ rosrun my_robot_tutorials transmitter.py
+$ rosrun my_robot_tutorials Listener.py 
+$ rosrun rqt_graph rqt_graph
+```
+
+
+
